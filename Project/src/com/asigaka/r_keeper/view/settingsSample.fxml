@@ -6,8 +6,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="575.0" prefWidth="493.0" style="-fx-background-color: #dee8ec;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.asigaka.r_keeper.controllers.SettingsController">
    <children>
@@ -60,6 +60,11 @@
                   <Font name="DejaVu Sans Bold" size="13.0" />
                </font>
             </Button>
+            <Circle fx:id="circleColor" fill="#ff1f1f" layoutX="369.0" layoutY="24.0" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Circle>
          </children>
       </AnchorPane>
       <Button fx:id="backButton" layoutX="420.0" layoutY="529.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="59.0" text="Назад">

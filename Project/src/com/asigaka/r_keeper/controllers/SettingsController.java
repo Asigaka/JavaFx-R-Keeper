@@ -3,13 +3,15 @@ package com.asigaka.r_keeper.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.asigaka.r_keeper.SceneLoader;
-import com.asigaka.r_keeper.database.DbHandler;
+import com.asigaka.r_keeper.database.DbConnector;
+import com.asigaka.r_keeper.database.DbSettings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 
 public class SettingsController {
 
@@ -41,26 +43,39 @@ public class SettingsController {
     private Button backButton;
 
     @FXML
+    private Circle circleColor;
+
+    DbConnector handler;
+
+    @FXML
     void initialize() {
+        handler = new DbConnector();
+
+        CheckConnection();
+
         backButton.setOnAction(actionEvent -> {
             backButton.getScene().getWindow().hide();
         });
 
         connectButton.setOnAction(actionEvent -> {
-            //connectButton.getScene().getWindow().hide();
             DbConnect();
         });
     }
 
     private void DbConnect() {
-        DbHandler handler = new DbHandler();
-        handler.FillSettings(hostField.getText(), portField.getText(), usernameField.getText(), passwordField.getText());
+        DbSettings.FillSettings(hostField.getText(), portField.getText(), usernameField.getText(), passwordField.getText());
 
+        CheckConnection();
+    }
+
+    private void CheckConnection() {
         if (handler.GetConnection() != null) {
-            urlLabel.setText("Вы подключились к " + handler.getDb_url());
+            circleColor.setFill(Paint.valueOf("green"));
+            urlLabel.setText("Вы подключены к " + DbSettings.DB_URL);
         }
         else {
-            urlLabel.setText("Подключение не удалось");
+            circleColor.setFill(Paint.valueOf("red"));
+            urlLabel.setText("Подключение отсутствует");
         }
     }
 }

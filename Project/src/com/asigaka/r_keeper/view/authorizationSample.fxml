@@ -68,5 +68,13 @@
             <DropShadow />
          </effect>
       </Button>
+      <Button fx:id="registerButton" layoutX="229.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Зарегистрировать">
+         <font>
+            <Font name="DejaVu Sans Bold" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>
