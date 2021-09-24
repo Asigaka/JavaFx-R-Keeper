@@ -45,6 +45,9 @@ public class SettingsController {
     @FXML
     private Circle circleColor;
 
+    @FXML
+    private TextField dbNameField;
+
     DbConnector handler;
 
     @FXML
@@ -63,7 +66,7 @@ public class SettingsController {
     }
 
     private void DbConnect() {
-        DbSettings.FillSettings(hostField.getText(), portField.getText(), usernameField.getText(), passwordField.getText());
+        DbSettings.FillSettings(dbNameField.getText(), hostField.getText(), portField.getText(), usernameField.getText(), passwordField.getText());
 
         CheckConnection();
     }
